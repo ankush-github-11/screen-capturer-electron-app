@@ -1,0 +1,13 @@
+{
+  "name": "screen-capturer",
+  "version": "1.0.0",
+  "description": "A simple Electron application which captures the screen and saves it as an image.",
+  "main": "src/main/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^40.2.1"
+  }
+}
