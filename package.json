@@ -5,9 +5,10 @@
   "main": "src/main/main.js",
   "type": "module",
   "scripts": {
-    "start": "electron ."
+    "start": "nodemon --watch src --ext js,css,html --exec electron ."
   },
   "devDependencies": {
-    "electron": "^40.2.1"
+    "electron": "^40.2.1",
+    "nodemon": "^3.1.11"
   }
 }
