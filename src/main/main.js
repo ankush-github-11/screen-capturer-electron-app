@@ -16,8 +16,8 @@ const createWindow = () => {
   win.loadFile(path.join(__dirname, "../renderer/index.html"));
 };
 
-ipcMain.on("hello", () => {
-  console.log("Hello from Renderer!");
+ipcMain.on("capture-screen", () => {
+  console.log("Screen capture requested!");
 });
 
 app.whenReady().then(createWindow);
