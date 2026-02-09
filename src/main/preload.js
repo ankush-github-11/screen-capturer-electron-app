@@ -1,7 +1,7 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("electronAPI", {
-  captureScreen: () => ipcRenderer.send("capture-screen"),
+  captureScreen: () => ipcRenderer.invoke("capture-screen"),
 });
 
 window.addEventListener("DOMContentLoaded", () => {

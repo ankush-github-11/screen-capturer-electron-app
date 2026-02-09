@@ -3,23 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSP (safe for Electron) -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'"
     />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/styles.css" />
     <script type="module" src="./renderer.js"></script>
+
     <title>Screen Capturer</title>
   </head>
+
   <body>
-    <div id="capture-btn" class="main-div">
-      <h1>Capture your screen</h1>
-      <div>
-        <img class="main-logo" src="./assets/main-logo.png" alt="">
+    <div class="app-container">
+      <div id="capture-btn" class="capture-card">
+        <img class="main-logo" src="./assets/main-logo.png" alt="Screen Capture" />
+        <h1>Screen Capturer</h1>
+        <p>Capture your screen in one click</p>
+        <button class="capture-btn">Capture Screen</button>
       </div>
     </div>
   </body>
