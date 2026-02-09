@@ -1,9 +1,5 @@
-import { app, BrowserWindow } from "electron";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const { app, BrowserWindow, ipcMain } = require("electron");
+const path = require("path");
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -11,11 +7,18 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      contextIsolation: true,
+      nodeIntegration: false,
+      sandbox: true,
     },
   });
 
   win.loadFile(path.join(__dirname, "../renderer/index.html"));
 };
+
+ipcMain.on("hello", () => {
+  console.log("Hello from Renderer!");
+});
 
 app.whenReady().then(createWindow);
 
