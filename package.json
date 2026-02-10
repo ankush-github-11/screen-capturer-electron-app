@@ -4,10 +4,28 @@
   "description": "A simple Electron application which captures the screen and saves it as an image.",
   "main": "src/main/main.js",
   "scripts": {
-    "start": "nodemon --watch src --ext js,css,html --exec electron ."
+    "start": "nodemon --watch src --ext js,css,html --exec electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "asar": true,
+    "appId": "com.example.screencapturer",
+    "productName": "Screen Capturer",
+    "files": [
+      "src/**/*",
+      "assets/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": "nsis"
+    }
   },
   "devDependencies": {
     "electron": "^40.2.1",
+    "electron-builder": "^26.7.0",
     "nodemon": "^3.1.11"
   }
 }
