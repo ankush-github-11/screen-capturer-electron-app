@@ -1,5 +1,4 @@
 const { app, BrowserWindow, ipcMain, desktopCapturer, dialog } = require("electron");
-
 const fs = require("fs");
 const path = require("path");
 
@@ -14,27 +13,47 @@ function getTimestamp() {
     .replace(/\..+/, "");
 }
 
+function resolveAppPath(...segments) {
+  // In production, app.getAppPath() returns the asar archive path
+  // In development, it returns the project root
+  return path.join(app.getAppPath(), ...segments);
+}
+
+function loadFile(filePath) {
+  const isDev = !app.isPackaged;
+  let file;
+  
+  if (isDev) {
+    file = path.join(__dirname, "../../", filePath);
+  } else {
+    file = resolveAppPath(filePath);
+  }
+  
+  return `file://${file.replace(/\\/g, "/")}`;
+}
+
 const createWindow = () => {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     show: true,
+
     icon: path.join(__dirname, "../../assets/icon.ico"),
+
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: resolveAppPath("src", "main", "preload.js"),
       contextIsolation: true,
       nodeIntegration: false,
-      sandbox: true,
+      sandbox: false,
     },
   });
 
-  mainWindow.loadFile(path.join(__dirname, "../renderer/index.html"));
+  const indexPath = path.join(__dirname, "../../src/renderer/index.html");
+  mainWindow.loadFile(indexPath);
 };
 
 ipcMain.handle("capture-screen", async () => {
-  if (mainWindow) {
-    mainWindow.hide();
-  }
+  if (mainWindow) mainWindow.hide();
 
   await new Promise((resolve) => setTimeout(resolve, 300));
 
@@ -48,7 +67,10 @@ ipcMain.handle("capture-screen", async () => {
 
   const { filePath } = await dialog.showSaveDialog({
     title: "Save Screenshot",
-    defaultPath: `screenshot_${timestamp}.png`,
+    defaultPath: path.join(
+      app.getPath("pictures"),
+      `screenshot_${timestamp}.png`
+    ),
   });
 
   if (!filePath) {

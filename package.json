@@ -9,22 +9,26 @@
   },
   "build": {
     "asar": true,
+    "asarUnpack": [
+      "**/*.dat"
+    ],
     "appId": "com.example.screencapturer",
     "productName": "Screen Capturer",
     "files": [
       "src/**/*",
-      "assets/**/*"
+      "assets/**/*",
+      "package.json"
     ],
     "directories": {
       "output": "dist"
     },
     "win": {
       "icon": "assets/icon.ico",
-      "target": "nsis"
+      "target": "portable"
     }
   },
   "devDependencies": {
-    "electron": "^40.2.1",
+    "electron": "^28.3.3",
     "electron-builder": "^26.7.0",
     "nodemon": "^3.1.11"
   }
