@@ -4,7 +4,7 @@ An elegant Electron application for capturing your screen and saving it as an im
 
 ![Main UI](assets/screenshot.png)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Electron](https://img.shields.io/badge/Electron-Desktop_App-blue.svg)
+![Electron](https://img.shields.io/badge/Electron-v28+-blue)
 ![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
 
 ---
@@ -65,7 +65,7 @@ Get the latest release of Screen Capturer:
 
 ### Prerequisites
 
-- **Node.js** (v14 or higher)
+- **Node.js** (v16 or higher)
 - **npm** (v6 or higher)
 
 ### Setup
@@ -181,6 +181,13 @@ Contributions are welcome! Feel free to:
 
 ---
 
+## Future Improvements
+
+- Region-based screen capture
+- Keyboard shortcuts
+- Auto-copy screenshot to clipboard
+- macOS & Linux support
+
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
@@ -189,7 +196,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## Author
 
-**Ankush** - [GitHub Profile](https://github.com/ankush-github-11)
+**Ankush Bhattacharjee** - [GitHub Profile](https://github.com/ankush-github-11)
 
 ---
 
