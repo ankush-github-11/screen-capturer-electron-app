@@ -2,7 +2,7 @@
 
 An elegant Electron application for capturing your screen and saving it as an image. Built with modern web technologies and a beautiful UI.
 
-![Main UI](assets/screenshot.png)
+![Main UI](assets/Screenshot.png)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Electron](https://img.shields.io/badge/Electron-v28+-blue)
 ![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
